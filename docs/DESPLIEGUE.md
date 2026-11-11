@@ -1,5 +1,10 @@
 # Publicar DUB ARENA y obtener una URL publica
 
+## Repositorio y despliegue actual
+
+- Codigo publicado: https://github.com/ismaelbenkhaddameicende-code/dub-arena
+- Despliegue en un clic: https://render.com/deploy?repo=https://github.com/ismaelbenkhaddameicende-code/dub-arena
+
 ## Estado de partida (comprobado, no supuesto)
 
 - 25 de 25 pruebas de extremo a extremo en verde (`npm test`): autenticacion, salas, aforo,
