@@ -1,0 +1,5 @@
+# Instalacion completa: transcripcion + diarizacion + separacion.
+# Requiere aceptar las condiciones de pyannote/speaker-diarization-3.1 en Hugging Face.
+-r requirements.txt
+pyannote.audio==3.3.2
+demucs==4.0.1

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  html, body, #root { height: 100%; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-ink-950 text-zinc-200 font-sans antialiased;
+    background-image:
+      radial-gradient(900px 500px at 12% -10%, rgba(124,92,255,0.16), transparent 70%),
+      radial-gradient(700px 400px at 92% 0%, rgba(34,211,238,0.08), transparent 65%);
+    background-attachment: fixed;
+  }
+  ::selection { @apply bg-accent/40 text-white; }
+  *:focus-visible { @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-ink-950; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0c0c12; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3c; border-radius: 999px; border: 2px solid #0c0c12; }
+}
+
+@layer utilities {
+  .safe-b { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+  .safe-t { padding-top: max(env(safe-area-inset-top), 0px); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
+
+/* En pantallas tactiles todo se pulsa con el dedo: minimo 44 px */
+@media (pointer: coarse) {
+  .btn, .input { min-height: 44px; }
+  .label { font-size: 12px; }
+  input[type='range'] { min-height: 28px; }
+}
+
+@layer components {
+  .panel { @apply rounded-2xl border border-line/80 bg-ink-850/80 shadow-panel backdrop-blur-sm; }
+  .panel-tight { @apply rounded-xl border border-line/70 bg-ink-900/70; }
+  .label { @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500; }
+  .hint { @apply text-xs leading-relaxed text-zinc-500; }
+  .input {
+    @apply w-full rounded-xl border border-line bg-ink-900 px-3.5 py-2.5 text-sm text-zinc-100
+           placeholder:text-zinc-600 focus:border-accent/60 focus:outline-none transition;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+           transition disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary { @apply btn bg-accent text-white hover:bg-accent-deep active:scale-[0.99]; }
+  .btn-ghost { @apply btn border border-line bg-ink-800/60 text-zinc-200 hover:border-accent/40 hover:bg-ink-700; }
+  .btn-danger { @apply btn border border-rose/30 bg-rose/10 text-rose hover:bg-rose/20; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-ink-800/70 px-2.5 py-1 text-[11px] font-medium text-zinc-300; }
+  .divider { @apply h-px w-full bg-gradient-to-r from-transparent via-line to-transparent; }
+  .grid-noise {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}

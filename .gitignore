@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.env
+.env.local
+storage/videos/*
+storage/recordings/*
+storage/exports/*
+storage/tmp/*
+!storage/**/.gitkeep
+ai-venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+.vite/
+
+# Datos locales y secretos que NUNCA deben publicarse
+storage/.dev-secret
+storage/*.db
+storage/*.db-shm
+storage/*.db-wal
+ai-venv/

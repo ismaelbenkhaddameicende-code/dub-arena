@@ -1,0 +1,24 @@
+# DUB ARENA en Render, plan gratuito (sin tarjeta).
+# Un unico servicio Docker: Express sirve la API, Socket.IO y la web compilada,
+# y la imagen incluye FFmpeg para poder exportar el video final.
+services:
+  - type: web
+    name: dub-arena
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SERVE_STATIC
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: STORAGE_DIR
+        value: /data
+      # Mismo origen: la web se sirve desde este propio servicio.
+      - key: CORS_ORIGINS
+        value: "*"

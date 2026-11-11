@@ -1,0 +1,15 @@
+# --- Base (obligatorio, ligero) ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# --- Transcripcion (CPU, int8). Modelo tiny/base. ---
+faster-whisper==1.1.0
+requests>=2.32
+huggingface_hub>=0.26
+
+# --- Diarizacion (opcional: requiere token de Hugging Face y aceptar condiciones) ---
+# pyannote.audio==3.3.2
+
+# --- Separacion voz/instrumental (opcional, pesado en CPU) ---
+# demucs==4.0.1

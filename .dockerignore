@@ -1,0 +1,9 @@
+node_modules
+**/node_modules
+ai-venv
+storage
+**/dist
+.git
+mobile/android
+*.log
+.env

@@ -1,0 +1,26 @@
+{
+  "name": "dub-arena",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Doblaje colaborativo en tiempo real",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "build:shared": "npm --workspace shared run build",
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm --workspace backend run dev",
+    "dev:web": "npm --workspace frontend run dev",
+    "build": "npm run build:shared && npm --workspace backend run build && npm --workspace frontend run build",
+    "start": "npm --workspace backend run start",
+    "test": "npm --workspace backend run test",
+    "ai": "python ai-services/main.py",
+    "dev:mobile": "npm --workspace frontend run dev:https",
+    "mobile:sync": "npm --workspace frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
