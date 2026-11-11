@@ -23,8 +23,8 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/shared ./shared
 COPY --from=build /app/backend ./backend
 COPY --from=build /app/frontend/dist ./frontend/dist
-RUN mkdir -p /data && useradd -m dub && chown -R dub:dub /app /data
-USER dub
+RUN mkdir -p /data && chown -R node:node /app /data
+USER node
 EXPOSE 7860
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||7860)+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 CMD ["node", "backend/dist/index.js"]
